@@ -1,5 +1,5 @@
 class AudioPlayer:
-    def queue_sound(self, path: str, repeat: bool = False) -> None:
+    def queue_sound(self, path: str, *, repeat: bool = False) -> None:
         """Adds a sound to the internal play queue.
 
         Arguments:

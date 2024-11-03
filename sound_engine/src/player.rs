@@ -31,7 +31,7 @@ impl AudioPlayer {
 
 #[pymethods]
 impl AudioPlayer {
-    #[pyo3(signature = (path, repeat = false))]
+    #[pyo3(signature = (path, *, repeat = false))]
     fn queue_sound(&self, path: String, repeat: bool) -> PyResult<()> {
         let file = File::open(path).map_err(|_| PyFileNotFoundError::new_err("File not found."))?;
         let buff = BufReader::new(file);
