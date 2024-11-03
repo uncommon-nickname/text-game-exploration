@@ -1,12 +1,13 @@
-use pyo3::prelude::*;
+mod device;
+mod engine;
+mod player;
 
-#[pyfunction]
-fn sum_as_string(a: usize, b: usize) -> PyResult<String> {
-    Ok((a + b).to_string())
-}
+use pyo3::prelude::*;
 
 #[pymodule]
 fn sound_engine(m: &Bound<'_, PyModule>) -> PyResult<()> {
-    m.add_function(wrap_pyfunction!(sum_as_string, m)?)?;
+    m.add_class::<engine::AudioEngine>()?;
+    m.add_class::<player::AudioPlayer>()?;
+
     Ok(())
 }
